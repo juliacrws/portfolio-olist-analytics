@@ -9,9 +9,12 @@ st.set_page_config(page_title="Olist Analytics", page_icon="📈", layout="wide"
 st.title("📊 Dashboard Executivo de Performance - Olist")
 st.markdown("Acompanhamento de KPIs e Business Analytics Integrado com IA Preditiva.")
 
-# 2. Caminho do banco Gold
-CAMINHO_GOLD = "../dados/3_gold_refined/"
-caminho_banco = os.path.join(CAMINHO_GOLD, "ecommerce_olist.db")
+# 2. Caminho dinâmico para o banco de dados (Funciona local e na nuvem)
+# Descobre onde o script atual está rodando
+DIRETORIO_ATUAL = os.path.dirname(os.path.abspath(__file__)) 
+
+# Monta o caminho correto voltando uma pasta e entrando em dados/3_gold_refined/
+caminho_banco = os.path.abspath(os.path.join(DIRETORIO_ATUAL, "..", "dados", "3_gold_refined", "ecommerce_olist.db"))
 
 # 3. Função para carregar os dados (Analíticos + Inteligência Artificial)
 @st.cache_data
